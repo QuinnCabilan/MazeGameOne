@@ -19,5 +19,5 @@ else{
 let title = document.getElementById("titleOne");
 
 button.addEventListener("click", function() {
-    title.textContent = "You shouldn't've done that.";
+    title.textContent = "You shouldn't've done that."; //kanye reference
 });
