@@ -1,3 +1,4 @@
+/*
 let health = 100;
 let random = Math.floor(Math.random() * 100) + 1;
 let totalHealth = health - random;
@@ -13,8 +14,8 @@ else if (totalHealth>=40){
 else{
     console.log(`Your health is ${totalHealth}: Situation dire. Heal immediately.`)
 } 
-
-    let button = document.getElementById("mybutton");
+*/
+    let button = document.getElementById("startButton");
 let title = document.getElementById("titleOne");
 
 button.addEventListener("click", function() {
