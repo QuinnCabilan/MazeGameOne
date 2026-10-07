@@ -18,7 +18,7 @@ body{
     background-color: grey;
 }
 
-#menu {
+#menu-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,32 +26,72 @@ body{
     padding-top: 50px;    
 }
 
-#startButton{
-    border-radius: 10px;
+.menu-buttons{
+        border-radius: 10px;
     border: solid 4px black;
     background-color: lightslategray;
     width: 300px;
     height: 100px;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     font-size: 30px;    
     }
-
-#options{
-    border-radius: 10px;
-    border: solid 4px black;
-    background-color: lightslategray;
-    width: 300px;
-    height: 100px;
+    #custom-menu{
+    background-color: aliceblue;
     justify-content: center;
-    font-size: 30px;   
+    position: relative;
+    width: 600px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    border: solid;
+    margin-left: 300px auto 0;
+   
+}
+#ctitle{
+    background-color: crimson;
+    border: solid black 5px;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
 }
 
-#customize{
-    border-radius: 10px;
-    border: solid 4px black;
-    background-color: lightslategray;
-    width: 300px;
-    height: 100px;
-    justify-content: center;
-    font-size: 30px;   
+#preview-player{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 2px black solid;
+    position: static;
+    margin-left:120px
+}
+.slider-container {
+  width: 100%;
+  max-width: 150px;
+  margin-right: 40px;
+  position: absolute;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #7a7a7a;
+  border-radius: 4px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  cursor: pointer;
 }
