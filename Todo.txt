@@ -1,0 +1,8 @@
+-  Lantern system
+-collison walls and wall logic
+-random meta events. 
+-locked rooms and keys
+-two keys for locked doors (one from trader optional and one on map randomly)
+-user has choice at npcs to get a key or refuel lantern.
+-start and end logic.
+-
