@@ -9,5 +9,6 @@
 -npc/s and dialogue logic (player cannot move mid cutscene, dialogue options)
 -possibly combat system? (enemies, health, damage to enemies, damage to players, range logic->how far or 
 close to enemy to deal and recieve damage)
+-character walks smoothly and can walk diagonally when user presses multiple keys simultaneously
 -
 -
