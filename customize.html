@@ -5,20 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customize</title>
     <link rel="stylesheet" href="style.css">
+    <script src="globalVars.js"></script>
+    <script src="main.js" defer></script>
 </head>
 
 <body>
-    <div id = "menu-screen">
+    <div class  = "menu-screen">
 
-        <h1 id="ctitle">Customization</h1>
+        <h1 class="title-type-b">Customization</h1>
         <h2>customization system goes here.</h2>
         <div id="custom-menu">
             
             <div id = "customize-preview">
                 <div id ="preview-player"></div>
             </div>
-            <div class="slider-container">
-              <input type="range" id="color-slide-r" min="0" max="255" value="255" class="slider">
+            <div id = "sliders-container">
+
+                <div class="slider-container">
+                    <input type="range" id="color-slide-r" min="0" max="255" value="255" class="slider">
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="color-slide-g" min="0" max="255" value="255" class="slider">
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="color-slide-b" min="0" max="255" value="255" class="slider">
+                </div>
             </div>
         </div>
       

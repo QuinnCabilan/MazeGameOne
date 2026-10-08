@@ -13,21 +13,31 @@
     border: solid;
     margin: auto;
 }
-
-body{
-    background-color: grey;
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
+body {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
 #menu-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    padding-top: 50px;    
+    padding-top: 50px;
 }
 
 .menu-buttons{
-        border-radius: 10px;
+    border-radius: 10px;
     border: solid 4px black;
     background-color: lightslategray;
     width: 300px;
@@ -35,9 +45,11 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 30px;    
-    }
-    #custom-menu{
+    font-size: 30px;
+    display: flex;
+}
+
+#custom-menu {
     background-color: aliceblue;
     justify-content: center;
     position: relative;
@@ -47,10 +59,34 @@ body{
     align-items: center;
     border-radius: 50px;
     border: solid;
-    margin-left: 300px auto 0;
-   
+    margin: 0 auto;
 }
-#ctitle{
+
+#options-menu {
+    background-color: aliceblue;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    border: solid;
+    flex-direction: column;
+    width: 600px;
+    padding: 30px 20px;
+    margin: 0 auto;
+}
+
+#toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title-type-b {
     background-color: crimson;
     border: solid black 5px;
     border-radius: 20px;
@@ -61,19 +97,20 @@ body{
     margin: auto;
 }
 
-#preview-player{
+#preview-player {
     width: 30px;
     height: 30px;
-    background-color: white;
+    background-color: black;
     border: 2px black solid;
     position: static;
     margin-left:120px
 }
+
 .slider-container {
   width: 100%;
   max-width: 150px;
   margin-right: 40px;
-  position: absolute;
+  margin-top: 10px;
 }
 
 .slider {
@@ -86,12 +123,36 @@ body{
   outline: none;
 }
 
-.slider::-webkit-slider-thumb {
+#toggleSprint {
+    width: 20px;
+    height: 20px;
+    accent-color: crimson;
+}
+
+#color-slide-r::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: red;
+  cursor: pointer;
+}
+#color-slide-g::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgb(0, 255, 0);
+  cursor: pointer;
+}
+#color-slide-b::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background:blue;
   cursor: pointer;
 }
