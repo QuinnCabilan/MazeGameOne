@@ -1,0 +1,13 @@
+-walls and wall logic
+-hotbar/inventory
+-keys, sword?
+-map is four quarters, screen size is only one quarter at a time
+-map rng logic
+-spawn/start logic
+-an unlockable ending/s
+-screen must shift to next quarter once player is in that area (camera follows player)
+-npc/s and dialogue logic (player cannot move mid cutscene, dialogue options)
+-possibly combat system? (enemies, health, damage to enemies, damage to players, range logic->how far or 
+close to enemy to deal and recieve damage)
+-
+-
