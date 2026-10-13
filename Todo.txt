@@ -1,4 +1,5 @@
 -walls and wall logic
+-randomness of the maze
 -hotbar/inventory
 -keys, sword?
 -map is four quarters, screen size is only one quarter at a time
@@ -10,5 +11,11 @@
 -possibly combat system? (enemies, health, damage to enemies, damage to players, range logic->how far or 
 close to enemy to deal and recieve damage)
 -character walks smoothly and can walk diagonally when user presses multiple keys simultaneously
--
--
+-----------------------------------------------------
+
+-customization that saves
+-maze must be random but still possible every time
+-fog
+-character logic
+-you escaped in x amount of time!
+-you failed due to loss of light!
