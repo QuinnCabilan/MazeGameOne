@@ -193,13 +193,31 @@ body {
 }
 
 #map{
+    position: relative;
     border: solid black 3px;
     height: 450px;
     width: 450px;
-    display: flex;
     margin: auto;
     background-color: whitesmoke;
 }
+
+#gridElement{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.maze-cell{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+}
+
+.maze-cell.wall{
+    background-color: black;
+}
+
 
 #player{
     position: relative;
