@@ -24,6 +24,10 @@ let playerG = document.getElementById("color-slide-g");
 let playerB = document.getElementById("color-slide-b");
 let playerDivPreview = document.getElementById("preview-player");
 let inGamePlayer = document.getElementById("player");
+let fog = document.getElementById("fog")
+const pressedKeys = [];
+const movementKeys = ["w", "a", "s", "d"];
+const otherKeys = ["shift"]
 
 const fadeEffect = document.getElementById("fadeEffect");
 
@@ -111,4 +115,79 @@ const callHome = document.getElementById("callHome");
 callHome.addEventListener("click", function() {
         window.location.href = "index.html";  
     
+});
+let fogX = player.x +(player.size/2)
+let fogY = player.y +(player.size/2)
+fog.style.setProperty('--x', `${fogX}px`);
+fog.style.setProperty('--y', `${fogY}px`);
+
+window.addEventListener("keydown", (event) => {
+    const key = event.key.toLowerCase();
+    if(!movementKeys.includes(key)) return;
+    if (!otherKeys.includes(key)) return;
+  event.preventDefault();
+  if(!pressedKeys.includes(key)){
+
+      pressedKeys.push(key)  
+    }
+})
+window.addEventListener("keyup", (event) => {
+    const key = event.key.toLowerCase();
+    const index = pressedKeys.indexOf(key);
+    if (index !== -1) {
+        pressedKeys.splice(index, 1);
+    }
+});
+let previousFrameTime
+function gameLoop(timestamp){
+    
+    const deltaSeconds = previousFrameTime === undefined
+        ? 0
+        : (timestamp - previousFrameTime) / 1000;
+    
+        previousFrameTime = timestamp;
+        let directionX=0;
+        let directionY=0
+        const upIndex = pressedKeys.indexOf("w");
+const downIndex = pressedKeys.indexOf("s");
+
+if (upIndex !== -1 && downIndex !== -1) {
+    directionY = upIndex > downIndex ? -1 : 1;
+} else if (upIndex !== -1) {
+    directionY = -1;
+} else if (downIndex !== -1) {
+    directionY = 1;
+}
+     const leftIndex = pressedKeys.indexOf("a");
+const rightIndex = pressedKeys.indexOf("d");
+
+if (leftIndex !== -1 && rightIndex !== -1) {
+    directionX = leftIndex > rightIndex ? -1 : 1;
+} else if (leftIndex !== -1) {
+    directionX = -1;
+} else if (rightIndex !== -1) {
+    directionX = 1;
+}
+        const directionLength = Math.hypot(directionX, directionY);
+        if(directionLength >0){
+            directionX /= directionLength
+            directionY /= directionLength;
+            player.x += directionX * player.speed * deltaSeconds;
+            player.y += directionY * player.speed * deltaSeconds;
+            const maxX = fog.clientWidth - inGamePlayer.offsetWidth;
+            const maxY = fog.clientHeight - inGamePlayer.offsetHeight;
+            player.x = Math.max(0, Math.min(maxX, player.x));
+            player.y = Math.max(0, Math.min(maxY, player.y));
+        }
+        inGamePlayer.style.left = `${player.x}px`;
+        inGamePlayer.style.top = `${player.y}px`;
+        
+        fog.style.setProperty("--x", `${player.x + inGamePlayer.offsetWidth / 2}px`);
+        fog.style.setProperty("--y", `${player.y + inGamePlayer.offsetHeight / 2}px`);
+        requestAnimationFrame(gameLoop)
+    }
+    requestAnimationFrame(gameLoop)
+    applyPlayerColorToDom();
+    window.addEventListener("blur", () => {
+    pressedKeys.length = 0;
 });
