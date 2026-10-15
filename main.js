@@ -98,3 +98,9 @@ async function typeWriter(text) {
     await sleep(speed);
   }
 }
+
+const callHome = document.getElementById("callHome");
+
+callHome.addEventListener("click", function() {
+    window.location.href = "index.html";
+});
