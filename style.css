@@ -158,3 +158,35 @@ body {
   background:blue;
   cursor: pointer;
 }
+
+#fatHead{
+    color: crimson;
+    text-decoration: underline;
+    justify-content: center;
+    display: flex;
+    font-size: 50px;
+    background-color: black;
+    width: 400px;
+    height: 100px;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50px;
+    border: solid;
+    margin: auto;
+}
+
+#map{
+    border: solid black 3px;
+    height: 450px;
+    width: 450px;
+    display: flex;
+    margin: auto;
+}
+
+#player{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: solid black 2px;
+    
+}
