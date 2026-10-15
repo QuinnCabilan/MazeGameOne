@@ -75,7 +75,6 @@ if (button && title) {
 }
 
 
-
 if (playerR && playerG && playerB && playerDivPreview) {
     loadPlayerColor();
     syncSlidersFromPlayer();
