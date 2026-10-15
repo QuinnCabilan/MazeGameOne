@@ -25,6 +25,8 @@ let playerB = document.getElementById("color-slide-b");
 let playerDivPreview = document.getElementById("preview-player");
 let inGamePlayer = document.getElementById("player");
 
+const fadeEffect = document.getElementById("fadeEffect");
+
 function applyPlayerColorToDom() {
     const colorTargets = [playerDivPreview, inGamePlayer].filter(Boolean);
 
@@ -59,7 +61,12 @@ function syncSlidersFromPlayer() {
 
 if (button && title) {
     button.addEventListener("click", function() {
+        
+    fadeEffect.classList.add("active");
        typeWriter("You shouldn't've done that."); // kanye reference
+       setTimeout(function() {
+        window.location.href = "game.html";
+    }, 3500);
     });
 }
 
@@ -102,5 +109,6 @@ async function typeWriter(text) {
 const callHome = document.getElementById("callHome");
 
 callHome.addEventListener("click", function() {
-    window.location.href = "index.html";
+        window.location.href = "index.html";  
+    
 });
