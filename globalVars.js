@@ -32,9 +32,8 @@ function loadPlayerColor() {
     if (!savedColor) {
         return;
     }
-
-    player.r = Number(savedColor.r) || 255;
-    player.g = Number(savedColor.g) || 255;
-    player.b = Number(savedColor.b) || 255;
+player.r = Number.isFinite(savedColor.r) ? savedColor.r : 255;
+player.g = Number.isFinite(savedColor.g) ? savedColor.g : 255;
+player.b = Number.isFinite(savedColor.b) ? savedColor.b : 255;
     updatePlayerColor();
 }
