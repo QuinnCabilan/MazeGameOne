@@ -11,6 +11,32 @@ const grid = Array.from(
     () => Array(columns).fill(0)
 );
 
+const startRow = 1;
+const startCol = 1;
+
+const directions = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+]
+
+const newRow = row + dr;
+const newCol = col + dc;
+
+const frontier = [];
+frontier.push([row, col])//.push moves elements of an array to the end of the array and returns the new length of the array.
+
+const randomIndex = Math.floor(
+    Math.random() * frontier.length
+);
+
+const [wallRow, wallCol] = frontier.splice(
+    randomINdex, 1
+)[0];
+
+/*
+
 // Add three test walls.
 grid.forEach((row, rowIndex) => {
     row.forEach((value, columnIndex) => {
