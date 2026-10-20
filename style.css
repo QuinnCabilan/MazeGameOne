@@ -193,13 +193,11 @@ body {
 }
 
 #map{
-    border: solid black 3px;
-    height: 500px;
-    width: 500px;
-    display: flex;
-    margin: auto;
-    background-color: whitesmoke;
-    transform: scaleX(1.5);
+    position: relative;
+    height: 504px;
+    width: 504px;
+    display: block;
+    overflow: hidden;
 }
 
 #player{
@@ -246,3 +244,22 @@ body {
     rgba(0, 0, 0, 0.95) 100%
   );
 }
+
+#gridElement{
+    position: absolute;
+    inset: 0;
+}
+/*(**NOTE FOR SELF**) inset is like padding but for all sides*/
+
+.maze-cell {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+}
+
+.maze-cell.wall{
+    background-color: blue; 
+}
+
+/*i made the maze walls blue because they would be camo in black because of fog, 
+feel free to change it to whatever*/

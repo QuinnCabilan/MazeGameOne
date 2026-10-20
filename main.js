@@ -170,8 +170,8 @@ const currentSpeed = pressedKeys.includes("shift")
     ? baseSpeed * sprintMultiplier
     : baseSpeed;
 const lightFlash = pressedKeys.includes("f")
-    ? fog.style.visibility =  hidden
-    : fog.style.visibility =  visible;
+    ? "hidden"
+    : "visible"; //was a wee bit overcomplicated just needed to be strings instead :D
 if (upIndex !== -1 && downIndex !== -1) {
     directionY = upIndex > downIndex ? -1 : 1;
 } else if (upIndex !== -1) {

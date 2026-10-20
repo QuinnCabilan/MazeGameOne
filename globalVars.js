@@ -2,8 +2,8 @@ const PLAYER_COLOR_KEY = "mazePlayerColor";
 const PLAYER_TOGGLE_SPRINT_KEY = "toggleSprint";
 
 let player = {
-    x: 300,
-    y: 300,
+    x: 24,
+    y: 24, //changed spawn positions to match maze point
     size: "30",
     speed: "180",
     r: 255,
