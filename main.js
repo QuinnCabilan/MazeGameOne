@@ -25,9 +25,24 @@ let playerB = document.getElementById("color-slide-b");
 let playerDivPreview = document.getElementById("preview-player");
 let inGamePlayer = document.getElementById("player");
 let fog = document.getElementById("fog")
+let sprintToggle = document.getElementById("toggleSprint");
 const pressedKeys = [];
 const movementKeys = ["w", "a", "s", "d"];
-const otherKeys = ["shift"]
+const otherKeys = ["shift","f"]
+let visionMeter = 100;
+const meterDrainPerSecond = 4;
+const maxVisionRadius = 70;
+const visionMeterElement = document.getElementById("visionMeter");
+
+loadToggleSprint();
+
+if (sprintToggle) {
+    sprintToggle.checked = player.toggleSprint;
+    sprintToggle.addEventListener("change", function() {
+        player.toggleSprint = sprintToggle.checked;
+        saveToggleSprint();
+    });
+}
 
 const fadeEffect = document.getElementById("fadeEffect");
 
@@ -122,8 +137,7 @@ fog.style.setProperty('--y', `${fogY}px`);
 
 window.addEventListener("keydown", (event) => {
     const key = event.key.toLowerCase();
-    if(!movementKeys.includes(key)) return;
-    if (!otherKeys.includes(key)) return;
+    if(!movementKeys.includes(key) && (!otherKeys.includes(key))) return;
   event.preventDefault();
   if(!pressedKeys.includes(key)){
 
@@ -146,10 +160,18 @@ function gameLoop(timestamp){
     
         previousFrameTime = timestamp;
         let directionX=0;
-        let directionY=0
+        let directionY=0;
+       
         const upIndex = pressedKeys.indexOf("w");
 const downIndex = pressedKeys.indexOf("s");
-
+const baseSpeed = player.speed;
+const sprintMultiplier = 1.5;
+const currentSpeed = pressedKeys.includes("shift")
+    ? baseSpeed * sprintMultiplier
+    : baseSpeed;
+const lightFlash = pressedKeys.includes("f")
+    ? fog.style.visibility =  hidden
+    : fog.style.visibility =  visible;
 if (upIndex !== -1 && downIndex !== -1) {
     directionY = upIndex > downIndex ? -1 : 1;
 } else if (upIndex !== -1) {
@@ -169,10 +191,16 @@ if (leftIndex !== -1 && rightIndex !== -1) {
 }
         const directionLength = Math.hypot(directionX, directionY);
         if(directionLength >0){
+            const isSprinting = directionLength > 0 && pressedKeys.includes("shift");
+const currentSpeed = isSprinting
+    ? player.speed * 1.5
+    : player.speed;
+
+fog.style.setProperty("--radius", isSprinting ? "50px" : "70px");
             directionX /= directionLength
             directionY /= directionLength;
-            player.x += directionX * player.speed * deltaSeconds;
-            player.y += directionY * player.speed * deltaSeconds;
+            player.x += directionX * currentSpeed * deltaSeconds;
+            player.y += directionY * currentSpeed * deltaSeconds;
             const maxX = fog.clientWidth - inGamePlayer.offsetWidth;
             const maxY = fog.clientHeight - inGamePlayer.offsetHeight;
             player.x = Math.max(0, Math.min(maxX, player.x));
@@ -184,6 +212,20 @@ if (leftIndex !== -1 && rightIndex !== -1) {
         fog.style.setProperty("--x", `${player.x + inGamePlayer.offsetWidth / 2}px`);
         fog.style.setProperty("--y", `${player.y + inGamePlayer.offsetHeight / 2}px`);
         requestAnimationFrame(gameLoop)
+        visionMeter = Math.max(
+    0,
+    visionMeter - meterDrainPerSecond * (deltaSeconds)
+);
+
+visionMeterElement.value = visionMeter;
+
+const meterRatio = visionMeter / 100;
+const baseRadius = maxVisionRadius * meterRatio;
+const radius = pressedKeys.includes("shift")
+    ? baseRadius * 0.6
+    : baseRadius;
+
+fog.style.setProperty("--radius", `${radius}px`);
     }
     requestAnimationFrame(gameLoop)
     applyPlayerColorToDom();

@@ -1,15 +1,27 @@
 const PLAYER_COLOR_KEY = "mazePlayerColor";
+const PLAYER_TOGGLE_SPRINT_KEY = "toggleSprint";
 
 let player = {
     x: 300,
     y: 300,
-    size: "30px",
-    speed: "6px",
+    size: "30",
+    speed: "180",
     r: 255,
     g: 255,
     b: 255,
-    color: "rgb(255, 255, 255)"
+    color: "rgb(255, 255, 255)",
+    toggleSprint: false
 };
+
+function saveToggleSprint() {
+    localStorage.setItem(PLAYER_TOGGLE_SPRINT_KEY, JSON.stringify(player.toggleSprint));
+}
+
+function loadToggleSprint() {
+    const savedToggle = localStorage.getItem(PLAYER_TOGGLE_SPRINT_KEY);
+    player.toggleSprint = savedToggle === null ? false : JSON.parse(savedToggle);
+    return player.toggleSprint;
+}
 
 function updatePlayerColor() {
     player.color = `rgb(${player.r}, ${player.g}, ${player.b})`;

@@ -230,6 +230,7 @@ body {
     display: flex;
 }
 #fog {
+    visibility:visible;
     position: relative;
   top: 0;
   left: 0;
@@ -239,9 +240,9 @@ body {
   pointer-events: none;
   z-index: 5;
     background: radial-gradient(
-    circle 70px at var(--x) var(--y), 
+    circle var(--radius,100px) at var(--x) var(--y), 
     transparent 0%, 
-    rgba(0, 0, 0, 0.4) 60%, 
+    rgba(219, 154, 1, 0.4) 40%, 
     rgba(0, 0, 0, 0.95) 100%
   );
 }
