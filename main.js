@@ -30,7 +30,7 @@ const pressedKeys = [];
 const movementKeys = ["w", "a", "s", "d"];
 const otherKeys = ["shift","f"]
 let visionMeter = 100;
-const meterDrainPerSecond = 4;
+const meterDrainPerSecond = 2;
 const maxVisionRadius = 70;
 const visionMeterElement = document.getElementById("visionMeter");
 
@@ -199,7 +199,7 @@ const currentSpeed = isSprinting
 fog.style.setProperty("--radius", isSprinting ? "50px" : "70px");
             directionX /= directionLength
             directionY /= directionLength;
-            player.x += directionX * currentSpeed * deltaSeconds;
+            player.x += directionX * currentSpeed * deltaSeconds; 
             player.y += directionY * currentSpeed * deltaSeconds;
             const maxX = fog.clientWidth - inGamePlayer.offsetWidth;
             const maxY = fog.clientHeight - inGamePlayer.offsetHeight;

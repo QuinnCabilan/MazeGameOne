@@ -61,32 +61,6 @@ if (exitCol % 2 ===0) exitCol--;
 grid[0][startCol] = 0;
 grid[rows - 1][exitCol] = 0;
 
-
-/*
-const newRow = row + dr;
-const newCol = col + dc;
-
-const frontier = [];
-frontier.push([row, col])//.push moves elements of an array to the end of the array and returns the new length of the array (Q).
-
-const randomIndex = Math.floor(
-    Math.random() * frontier.length
-);
-
-const [wallRow, wallCol] = frontier.splice(
-    randomINdex, 1
-)[0];
-
-
-
-grid.forEach((row, rowIndex) => {
-    row.forEach((value, columnIndex) => {
-        if (Math.random() < 0.1) { //0.x changes the % of walls filled in by x0% ie. 0.5=50%
-            grid[rowIndex][columnIndex] = 1;
-        }
-    });
-});
-*/
 const gridElement = document.createElement("div");
 gridElement.id = "gridElement";
 
@@ -124,7 +98,7 @@ function wallRightThereBro(x, y) {
         [x + size - 1, y + size - 1]
     ];
 
-    return corners.some(([pageXOffset, py]) => {
+    return corners.some(([pageXOffset, py]) => { //corners.some returns true if a corner tries to overlap a wall
         const col = Math.floor(px / cellsize); 
         const row = Math.floor(py / cellsize); //basically turns pixels into grid coordinates
 

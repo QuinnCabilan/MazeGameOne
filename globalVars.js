@@ -4,13 +4,14 @@ const PLAYER_TOGGLE_SPRINT_KEY = "toggleSprint";
 let player = {
     x: 24,
     y: 24, //changed spawn positions to match maze point
-    size: "30",
+    size: "20",
     speed: "180",
     r: 255,
     g: 255,
     b: 255,
     color: "rgb(255, 255, 255)",
-    toggleSprint: false
+    toggleSprint: false,
+    hasKey: false
 };
 
 function saveToggleSprint() {

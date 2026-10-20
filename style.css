@@ -202,12 +202,12 @@ body {
 
 #player{
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     box-sizing: border-box;
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: solid black 2px;
     top:0px;
     left:0px;
@@ -234,16 +234,16 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 1); /* The color of the hidden areas */;
+  background: rgba(0, 0, 0, 1); 
   pointer-events: none;
   z-index: 5;
     background: radial-gradient(
-    circle var(--radius,100px) at var(--x) var(--y), 
+    circle var(--radius,150px) at var(--x) var(--y), 
     transparent 0%, 
     rgba(219, 154, 1, 0.4) 40%, 
     rgba(0, 0, 0, 0.95) 100%
   );
-}
+} 
 
 #gridElement{
     position: absolute;
