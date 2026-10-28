@@ -202,12 +202,10 @@ body {
 
 #player{
     position: relative;
-    width: 10px;
-    height: 10px;
+    width: 18px;
+    height: 18px;
     box-sizing: border-box;
     position: absolute;
-    width: 20px;
-    height: 20px;
     border: solid black 2px;
     top:0px;
     left:0px;
@@ -229,7 +227,8 @@ body {
 }
 #fog {
     visibility:visible;
-    position: relative;
+    position: absolute;
+    inset: 0;
   top: 0;
   left: 0;
   width: 100%;
@@ -243,7 +242,7 @@ body {
     rgba(219, 154, 1, 0.4) 40%, 
     rgba(0, 0, 0, 0.95) 100%
   );
-} 
+}
 
 #gridElement{
     position: absolute;

@@ -151,7 +151,10 @@ window.addEventListener("keyup", (event) => {
         pressedKeys.splice(index, 1);
     }
 });
+
 let previousFrameTime
+let chickenDinner = false;
+
 function gameLoop(timestamp){
     
     const deltaSeconds = previousFrameTime === undefined
@@ -199,12 +202,28 @@ const currentSpeed = isSprinting
 fog.style.setProperty("--radius", isSprinting ? "50px" : "70px");
             directionX /= directionLength
             directionY /= directionLength;
-            player.x += directionX * currentSpeed * deltaSeconds; 
-            player.y += directionY * currentSpeed * deltaSeconds;
-            const maxX = fog.clientWidth - inGamePlayer.offsetWidth;
-            const maxY = fog.clientHeight - inGamePlayer.offsetHeight;
-            player.x = Math.max(0, Math.min(maxX, player.x));
-            player.y = Math.max(0, Math.min(maxY, player.y));
+
+            /*player.x += directionX * currentSpeed * deltaSeconds; 
+            player.y += directionY * currentSpeed * deltaSeconds;*/
+            
+            const maxX = map.clientWidth - inGamePlayer.offsetWidth;
+            const maxY = map.clientHeight - inGamePlayer.offsetHeight;
+
+            const nextX = Math.max(0, Math.min(maxX,
+                player.x + directionX * currentSpeed * deltaSeconds))
+                
+            const nextY = Math.max(0, Math.min(maxY,
+                player.y + directionY * currentSpeed * deltaSeconds))
+
+            if (!wallRightThereBro(nextX, player.y)) {
+                player.x = nextX;
+            }
+            if (!wallRightThereBro(player.x, nextY)) {
+                player.y = nextY;
+            }
+
+            /*player.x = Math.max(0, Math.min(maxX, player.x));
+            player.y = Math.max(0, Math.min(maxY, player.y));*/
         }
         inGamePlayer.style.left = `${player.x}px`;
         inGamePlayer.style.top = `${player.y}px`;
@@ -226,7 +245,20 @@ const radius = pressedKeys.includes("shift")
     : baseRadius;
 
 fog.style.setProperty("--radius", `${radius}px`);
+
+    
+
+    const playerCol = Math.floor(player.x / cellSize); //math.floor turns pixel postition into grid column
+    const playerRow = Math.floor(player.y / cellSize); //math.floor turns pixel postition into grid row
+
+    if (!chickenDinner && playerRow === 20 && playerCol === 19) {
+        chickenDinner = true;
+        alert("You Win!")
+        window.location.reload();
+        return;
     }
+
+    } //end of gameloop
     requestAnimationFrame(gameLoop)
     applyPlayerColorToDom();
     window.addEventListener("blur", () => {

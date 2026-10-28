@@ -92,15 +92,15 @@ function wallRightThereBro(x, y) {
     const size = inGamePlayer.offsetWidth;
 
     const corners = [ //corners = the four corners of the player not the maze
-        [x, y]
+        [x, y],
         [x + size - 1, y],
         [x, y + size - 1],
         [x + size - 1, y + size - 1]
     ];
 
-    return corners.some(([pageXOffset, py]) => { //corners.some returns true if a corner tries to overlap a wall
-        const col = Math.floor(px / cellsize); 
-        const row = Math.floor(py / cellsize); //basically turns pixels into grid coordinates
+    return corners.some(([px, py]) => { //corners.some returns true if a corner tries to overlap a wall
+        const col = Math.floor(px / cellSize); 
+        const row = Math.floor(py / cellSize); //basically turns pixels into grid coordinates
 
         return grid[row]?.[col] !== 0;
     })
